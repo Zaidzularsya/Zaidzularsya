@@ -73,6 +73,6 @@ Route.get('/battery-status','UsersController.batteryStatus')
 
 
 // Devices Controller
-Route.group(()=>{
-  Route.resource('arduino','DevicesController')
-}).prefix('api')
+// Route.group(()=>{
+//   Route.resource('arduino','DevicesController')
+// }).prefix('api')

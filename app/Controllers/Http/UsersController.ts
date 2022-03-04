@@ -7,7 +7,7 @@ import batteryLevel from 'battery-level';
 // import isCharging from 'is-charging';
 import isCharging from 'is-charging';
 import axios from 'axios';
-const notifier = require('node-notifier');
+// const notifier = require('node-notifier');
 
 
 /*
@@ -60,7 +60,7 @@ export default class UsersController {
 		let _data 	= request.all()
 		let _input 	= JSON.parse(_data.data)
 		_input.PASSWORD = Encryption.encrypt(_input.PASSWORD)
-		let store_data = await Database.table('ZT_USERS').insert(_input)
+		// let store_data = await Database.table('ZT_USERS').insert(_input)
 		let _verify_email = this.getVerifyUrl("Yulianto@neuronworks.co.id")
 		let result 	= {
 			status: 'success',
@@ -94,7 +94,7 @@ export default class UsersController {
 		return "destroy"
 	}
 
-	public async login({request, response, session}){
+	public async login({request, session}){
 		let param = request.only(['username','password'])
 		// console.log(param.username,':',param.password)
 		let getPass = await this.getPassword(param.username)
@@ -213,27 +213,27 @@ export default class UsersController {
 	}
 
 
-	public sendNotif(){
-		notifier.notify(
-			{
-				title: 'Charging notification',
-				message: 'Hello from node, Mr. User!',
-				// icon: path.join(__dirname, 'coulson.jpg'), // Absolute path (doesn't work on balloons)
-				sound: true, // Only Notification Center or Windows Toasters
-				wait: true // Wait with callback, until user action is taken against notification, does not apply to Windows Toasters as they always wait or notify-send as it does not support the wait option
-			},
-			function (err, response, metadata) {
-			// Response is response from notification
-			// Metadata contains activationType, activationAt, deliveredAt
-			}
-			);
+	// public sendNotif(){
+	// 	notifier.notify(
+	// 		{
+	// 			title: 'Charging notification',
+	// 			message: 'Hello from node, Mr. User!',
+	// 			// icon: path.join(__dirname, 'coulson.jpg'), // Absolute path (doesn't work on balloons)
+	// 			sound: true, // Only Notification Center or Windows Toasters
+	// 			wait: true // Wait with callback, until user action is taken against notification, does not apply to Windows Toasters as they always wait or notify-send as it does not support the wait option
+	// 		},
+	// 		function (err, response, metadata) {
+	// 		// Response is response from notification
+	// 		// Metadata contains activationType, activationAt, deliveredAt
+	// 		}
+	// 		);
 
-			notifier.on('click', function (notifierObject, options, event) {
-			// Triggers if `wait: true` and user clicks notification
-			});
+	// 		notifier.on('click', function (notifierObject, options, event) {
+	// 		// Triggers if `wait: true` and user clicks notification
+	// 		});
 
-			notifier.on('timeout', function (notifierObject, options) {
-			// Triggers if `wait: true` and notification closes
-			});
-	}
+	// 		notifier.on('timeout', function (notifierObject, options) {
+	// 		// Triggers if `wait: true` and notification closes
+	// 		});
+	// }
 }
