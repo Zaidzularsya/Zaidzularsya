@@ -1,0 +1,47 @@
+@layout('layouts/MainBackEnd')
+@set('title','Backend')
+
+
+@section('body')
+<body class="g-sidenav-show bg-gray-100">
+<div id="react-app"></div>
+{{-- Sidenav --}}
+{{-- <main class="main-content position-relative border-radius-lg "> --}}
+{{-- NavBar --}}
+{{-- MainContent --}}
+{{-- </main> --}}
+{{-- Plugin --}}
+  
+</body>
+
+@end
+
+@section('scripts')
+  @super {{-- Super means inherit --}}  
+  <!--   Core JS Files   -->
+  <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+  <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+  
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="{{ asset('assets/js/argon-dashboard.min.js') }}"></script>
+  <!-- Load our React component. -->
+  <script src="{{ asset('assets/backend.js') }}"></script>
+
+  <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
+  <script>
+    
+  </script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+@end
